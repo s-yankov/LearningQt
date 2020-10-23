@@ -1,25 +1,43 @@
 #include "RectItem.h"
 
 #include <QDebug>
+#include <QtWidgets/QGraphicsScene>
+
+#include "Bullet.h"
 
 void CRectItem::keyPressEvent( QKeyEvent* pEvent )
 {
-    if ( pEvent->key() == Qt::Key_Left )
+    int nKeyPressed = pEvent->key();
+    switch ( nKeyPressed )
+    {
+    case Qt::Key_Left:
     {
         setPos( x() - 10, y() );
+        break;
     }
-    else if ( pEvent->key() == Qt::Key_Right )
+    case Qt::Key_Right:
     {
         setPos( x() + 10, y() );
+        break;
     }
-    else if ( pEvent->key() == Qt::Key_Up )
+    case Qt::Key_Up:
     {
         setPos( x(), y() - 10 );
+        break;
     }
-    else if ( pEvent->key() == Qt::Key_Down )
+    case Qt::Key_Down:
     {
         setPos( x(), y() + 10 );
+        break;
     }
-
-    qDebug() << "Key pressed";
+    case Qt::Key_Space:
+    {
+        CBullet* pBullet = new CBullet();
+        pBullet->setPos( x(), y() );
+        scene()->addItem( pBullet );
+        break;
+    }
+    default:
+        break;
+    }
 }

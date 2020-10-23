@@ -24,6 +24,9 @@ int main( int argc, char* argv[] )
 
     QGraphicsView* pView = new QGraphicsView( pScene );
 
+    pView->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
+    pView->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
+
     pView->show();
 
     return a.exec();
