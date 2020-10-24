@@ -23,16 +23,6 @@ void CRectItem::keyPressEvent( QKeyEvent* pEvent )
         setPos( x() + 10, y() );
         break;
     }
-    case Qt::Key_Up:
-    {
-        setPos( x(), y() - 10 );
-        break;
-    }
-    case Qt::Key_Down:
-    {
-        setPos( x(), y() + 10 );
-        break;
-    }
     case Qt::Key_Space:
     {
         CBullet* pBullet = new CBullet();
