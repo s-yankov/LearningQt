@@ -4,6 +4,7 @@
 #include "Bullet.h"
 
 #include <QTimer>
+#include <QtWidgets/QGraphicsScene>
 
 CBullet::CBullet()
 {
@@ -17,4 +18,10 @@ CBullet::CBullet()
 void CBullet::move()
 {
 	setPos( x(), y() - 10 );
+
+	if ( pos().y() + rect().height() < 0 )
+	{
+		scene()->removeItem( this );
+		delete this;
+	}
 }
