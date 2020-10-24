@@ -13,7 +13,7 @@ CEnemy::CEnemy()
 	int nRandomNumber = rand() % 700;
 	setPos( nRandomNumber, 10 );
 
-	QTimer* pTimer = new QTimer();
+	QTimer* pTimer { new QTimer() };
 	connect( pTimer, SIGNAL( timeout() ), this, SLOT( move() ) );
 	pTimer->start( 50 );
 }

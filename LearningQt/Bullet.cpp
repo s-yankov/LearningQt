@@ -13,7 +13,7 @@ CBullet::CBullet()
 {
 	setRect( 0, 0, 10, 50 );
 
-	QTimer* pTimer = new QTimer();
+	QTimer* pTimer { new QTimer() };
 	connect( pTimer, SIGNAL( timeout() ), this, SLOT( move() ) );
 	pTimer->start( 50 );
 }
