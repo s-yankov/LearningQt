@@ -1,3 +1,6 @@
+///////////////////
+/// Bullet.cpp
+///
 #include "Bullet.h"
 
 #include <QTimer>

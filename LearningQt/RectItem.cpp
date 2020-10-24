@@ -1,3 +1,6 @@
+///////////////////
+/// RectItem.cpp
+///
 #include "RectItem.h"
 
 #include <QDebug>
