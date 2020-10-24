@@ -1,5 +1,5 @@
 ///////////////////
-/// Bullet.h
+/// Enemy.h
 ///
 #pragma once
 
@@ -7,15 +7,15 @@
 #include <QObject>
 
 ///////////////////
-/// CBullet
-class CBullet : public QObject, public QGraphicsRectItem
+/// CEnemy
+class CEnemy : public QObject, public QGraphicsRectItem
 {
 	Q_OBJECT
 
 /////////////////////////////
 /// Constructor / Destructor
 public:
-	CBullet();
+	CEnemy();
 
 /////////////////////////////
 /// Methods (Slots)

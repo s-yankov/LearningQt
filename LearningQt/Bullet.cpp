@@ -5,6 +5,9 @@
 
 #include <QTimer>
 #include <QtWidgets/QGraphicsScene>
+#include <QList>
+
+#include "Enemy.h"
 
 CBullet::CBullet()
 {
@@ -17,6 +20,19 @@ CBullet::CBullet()
 
 void CBullet::move()
 {
+	QList<QGraphicsItem*> pCollidingItems = collidingItems();
+	for ( int_fast64_t i {}; i < pCollidingItems.size(); i++ )
+	{
+		if ( typeid( *( pCollidingItems[ i ] ) ) == typeid( CEnemy ) )
+		{
+			scene()->removeItem( pCollidingItems[ i ] );
+			scene()->removeItem( this );
+			delete pCollidingItems[ i ];
+			delete this;
+			return;
+		}
+	}
+
 	setPos( x(), y() - 10 );
 
 	if ( pos().y() + rect().height() < 0 )

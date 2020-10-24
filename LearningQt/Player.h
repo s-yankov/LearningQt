@@ -1,15 +1,17 @@
 ///////////////////
-/// RectItem.h
+/// Player.h
 ///
 #pragma once
 
 #include <QtWidgets/QGraphicsRectItem>
 #include <QKeyEvent>
+#include <QObject>
 
 ///////////////////
-/// CRectItem
-class CRectItem : public QGraphicsRectItem
+/// CPlayer
+class CPlayer : public QObject, public QGraphicsRectItem
 {
+	Q_OBJECT
 ///////////////////
 /// Methods
 public:
@@ -18,5 +20,13 @@ public:
 	/// </summary>
 	/// <param name="pEvent">*QKeyEvent</param>
 	void keyPressEvent( QKeyEvent* pEvent );
+
+///////////////////
+/// Methods (Slots)
+public slots:
+	/// <summary>
+	/// Creates and adds enemies to scene
+	/// </summary>
+	void spawnEnemy();
 };
 
