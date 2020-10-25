@@ -4,7 +4,6 @@
 #include "Bullet.h"
 
 #include <QTimer>
-#include <QtWidgets/QGraphicsScene>
 #include <QList>
 
 #include "Enemy.h"
@@ -29,8 +28,8 @@ void CBullet::move()
 		if ( typeid( *( pCollidingItems[ i ] ) ) == typeid( CEnemy ) )
 		{
 			g_pGame->getScore().increase();
-			scene()->removeItem( pCollidingItems[ i ] );
-			scene()->removeItem( this );
+			g_pGame->scene()->removeItem( pCollidingItems[ i ] );
+			g_pGame->scene()->removeItem( this );
 			delete pCollidingItems[ i ];
 			delete this;
 			return;
@@ -41,7 +40,7 @@ void CBullet::move()
 
 	if ( pos().y() + rect().height() < 0 )
 	{
-		scene()->removeItem( this );
+		g_pGame->scene()->removeItem( this );
 		delete this;
 	}
 }
