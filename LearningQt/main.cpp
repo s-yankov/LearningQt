@@ -4,12 +4,15 @@
 
 #include "Game.h"
 
+// Bad tutorial - bad practice
+CGame* g_pGame;
+
 int main( int argc, char* argv[] )
 {
     QApplication a( argc, argv );
-    
-    CGame* pGame = new CGame();
-    pGame->show();
+
+    g_pGame = new CGame();
+    g_pGame->show();
 
     return a.exec();
 }
