@@ -28,7 +28,11 @@ CGame::CGame( QWidget* pParent )
     m_pPlayer->setFocus();
 
     // Add score to the scene
+    m_pScore->setPos( x(), y() );
     m_pScene->addItem( m_pScore );
+
+    m_pHealth->setPos( x() + (qreal)GAME_VIEW_WIDTH - m_pHealth->textWidth(), y() );
+    m_pScene->addItem( m_pHealth );
 
     // Disable horizontal and vertical scrolling
     setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
@@ -43,4 +47,9 @@ CGame::CGame( QWidget* pParent )
 CScore& CGame::getScore()
 {
     return *m_pScore;
+}
+
+CHealth& CGame::getHealth()
+{
+    return *m_pHealth;
 }

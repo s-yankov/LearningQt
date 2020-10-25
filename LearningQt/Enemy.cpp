@@ -7,6 +7,11 @@
 #include <QtWidgets/QGraphicsScene>
 #include <stdlib.h>
 
+#include "Player.h"
+#include "Game.h"
+
+extern CGame* g_pGame;
+
 #define ENEMY_RECT_WIDTH	100
 #define ENEMY_RECT_HEIGHT	100
 
@@ -23,6 +28,17 @@ CEnemy::CEnemy()
 
 void CEnemy::move()
 {
+	QList<QGraphicsItem*> pCollidingItems = collidingItems();
+	for ( int_fast64_t i {}; i < pCollidingItems.size(); i++ )
+	{
+		if ( typeid( *( pCollidingItems[ i ] ) ) == typeid( CPlayer ) )
+		{
+			g_pGame->getHealth().decrease();
+			g_pGame->scene()->removeItem( this );
+			delete this;
+			return;
+		}
+	}
 	setPos( x(), y() + 5 );
 
 	if ( pos().y() + rect().height() < 0 )

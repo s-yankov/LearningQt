@@ -9,6 +9,7 @@
 
 #include "Player.h"
 #include "Score.h"
+#include "Health.h"
 
 class CGame : public QGraphicsView
 {
@@ -20,7 +21,8 @@ public:
 /////////////////////////////
 /// Methods
 public:
-    CScore& getScore();
+    CScore&     getScore();
+    CHealth&    getHealth();
 
 /////////////////////////////
 /// Members
@@ -28,6 +30,7 @@ private:
     QGraphicsScene* m_pScene    { new QGraphicsScene() };
     CPlayer*        m_pPlayer   { new CPlayer() };
     CScore*         m_pScore    { new CScore() };
+    CHealth*        m_pHealth   { new CHealth() };
     //Score* score;
     //Health* health;
 
