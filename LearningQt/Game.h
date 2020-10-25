@@ -16,12 +16,18 @@ class CGame : public QGraphicsView
 /////////////////////////////
 /// Constructor / Destructor
 public:
+    /// <summary>
+    /// Text representing the score of the player
+    /// </summary>
+    /// <param name="pParent"></param>
     CGame( QWidget* pParent = 0 );
 
 /////////////////////////////
 /// Methods
 public:
+    /// <returns>Reference to player CScore object</returns>
     CScore&     getScore();
+    /// <returns>Reference to player CHealth object</returns>
     CHealth&    getHealth();
 
 /////////////////////////////

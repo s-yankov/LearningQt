@@ -17,7 +17,11 @@ public:
 ///////////////////////////
 /// Methods
 public:
+	/// <summary>
+	/// Increases score by 1
+	/// </summary>
 	void increase();
+	/// <returns>Current score</returns>
 	long getScore();
 
 //////////////////////////
