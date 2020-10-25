@@ -42,7 +42,7 @@ void CPlayer::keyPressEvent( QKeyEvent* pEvent )
     case Qt::Key_Space:
     {
         CBullet* pBullet { new CBullet() };
-        pBullet->setPos( x(), y() );
+        pBullet->setPos( x() + rect().width() / 2 - pBullet->rect().width() / 2, y() - pBullet->rect().height() );
         scene()->addItem( pBullet );
         break;
     }
