@@ -1,0 +1,40 @@
+///////////////////
+/// Game.h
+///
+#include "Game.h"
+
+#include <QTimer>
+#include <QDebug>
+
+#include "Enemy.h"
+
+#define GAME_VIEW_WIDTH     800
+#define GAME_VIEW_HEIGHT    600
+
+CGame::CGame( QWidget* pParent )
+{
+    // Set fixed size for the view
+    setFixedSize( GAME_VIEW_WIDTH, GAME_VIEW_HEIGHT );
+
+    // Create scene with the size of the view
+    m_pScene = new QGraphicsScene();
+    m_pScene->setSceneRect( 0, 0, GAME_VIEW_WIDTH, GAME_VIEW_HEIGHT );
+    setScene( m_pScene );
+
+    // Create player in the middle of the bottom side of the view
+    // Make it focusable and focus it
+    m_pPlayer = new CPlayer();
+    m_pScene->addItem( m_pPlayer );
+    m_pPlayer->setPos( GAME_VIEW_WIDTH / 2 - m_pPlayer->rect().width() / 2, GAME_VIEW_HEIGHT - m_pPlayer->rect().height() - 3 );
+    m_pPlayer->setFlag( QGraphicsItem::ItemIsFocusable );
+    m_pPlayer->setFocus();
+
+    // Disable horizontal and vertical scrolling
+    setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
+    setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
+
+    // Add enemies
+    QTimer* pTimer { new QTimer() };
+    QObject::connect( pTimer, SIGNAL( timeout() ), m_pPlayer, SLOT( spawnEnemy() ) );
+    pTimer->start( 2500 );
+}

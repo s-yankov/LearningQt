@@ -9,6 +9,14 @@
 #include "Bullet.h"
 #include "Enemy.h"
 
+#define PLAYER_RECT_WIDTH   100
+#define PLAYER_RECT_HEIGTH  100
+
+CPlayer::CPlayer()
+{
+    setRect( 0, 0, PLAYER_RECT_WIDTH, PLAYER_RECT_HEIGTH );
+}
+
 void CPlayer::keyPressEvent( QKeyEvent* pEvent )
 {
     int nKeyPressed { pEvent->key() };

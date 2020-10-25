@@ -12,6 +12,13 @@
 class CPlayer : public QObject, public QGraphicsRectItem
 {
 	Q_OBJECT
+
+////////////////////////////////////////
+/// Constructor / Destructor
+public:
+	CPlayer();
+
+
 ///////////////////
 /// Methods
 public:
@@ -20,6 +27,7 @@ public:
 	/// </summary>
 	/// <param name="pEvent">*QKeyEvent</param>
 	void keyPressEvent( QKeyEvent* pEvent );
+
 
 ///////////////////
 /// Methods (Slots)
