@@ -8,6 +8,7 @@
 #include <QtWidgets/QGraphicsView>
 
 #include "Player.h"
+#include "Score.h"
 
 class CGame : public QGraphicsView
 {
@@ -19,8 +20,10 @@ public:
 
 /////////////////////////////
 /// Members
-    QGraphicsScene* m_pScene;
-    CPlayer* m_pPlayer;
+private:
+    QGraphicsScene* m_pScene    { new QGraphicsScene() };
+    CPlayer*        m_pPlayer   { new CPlayer() };
+    CScore*         m_pScore    { new CScore() };
     //Score* score;
     //Health* health;
 

@@ -14,7 +14,6 @@
 CGame::CGame( QWidget* pParent )
 {
     // Create scene with the size of the view
-    m_pScene = new QGraphicsScene();
     m_pScene->setSceneRect( 0, 0, GAME_VIEW_WIDTH, GAME_VIEW_HEIGHT );
     setScene( m_pScene );
 
@@ -23,11 +22,13 @@ CGame::CGame( QWidget* pParent )
 
     // Create player in the middle of the bottom side of the view
     // Make it focusable and focus it
-    m_pPlayer = new CPlayer();
     m_pScene->addItem( m_pPlayer );
     m_pPlayer->setPos( GAME_VIEW_WIDTH / 2 - m_pPlayer->rect().width() / 2, GAME_VIEW_HEIGHT - m_pPlayer->rect().height() - 3 );
     m_pPlayer->setFlag( QGraphicsItem::ItemIsFocusable );
     m_pPlayer->setFocus();
+
+    // Add score to the scene
+    m_pScene->addItem( m_pScore );
 
     // Disable horizontal and vertical scrolling
     setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
