@@ -39,3 +39,8 @@ CGame::CGame( QWidget* pParent )
     QObject::connect( pTimer, SIGNAL( timeout() ), m_pPlayer, SLOT( spawnEnemy() ) );
     pTimer->start( 2500 );
 }
+
+CScore& CGame::getScore()
+{
+    return *m_pScore;
+}

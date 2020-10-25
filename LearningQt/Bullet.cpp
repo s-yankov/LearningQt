@@ -8,6 +8,9 @@
 #include <QList>
 
 #include "Enemy.h"
+#include "Game.h"
+
+extern CGame* g_pGame;
 
 CBullet::CBullet()
 {
@@ -25,6 +28,7 @@ void CBullet::move()
 	{
 		if ( typeid( *( pCollidingItems[ i ] ) ) == typeid( CEnemy ) )
 		{
+			g_pGame->getScore().increase();
 			scene()->removeItem( pCollidingItems[ i ] );
 			scene()->removeItem( this );
 			delete pCollidingItems[ i ];

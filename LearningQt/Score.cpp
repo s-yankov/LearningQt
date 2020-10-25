@@ -12,6 +12,7 @@ CScore::CScore( QGraphicsItem* pParent ) : QGraphicsTextItem( pParent )
 void CScore::increase()
 {
     m_lScore++;
+    setPlainText( m_strText + QString::number( m_lScore ) );
 }
 
 long CScore::getScore()

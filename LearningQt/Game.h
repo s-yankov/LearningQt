@@ -17,6 +17,10 @@ class CGame : public QGraphicsView
 public:
     CGame( QWidget* pParent = 0 );
 
+/////////////////////////////
+/// Methods
+public:
+    CScore& getScore();
 
 /////////////////////////////
 /// Members
