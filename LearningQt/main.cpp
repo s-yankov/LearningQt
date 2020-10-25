@@ -12,7 +12,6 @@ int main( int argc, char* argv[] )
     QApplication a( argc, argv );
 
     g_pGame = new CGame();
-    g_pGame->show();
 
     return a.exec();
 }

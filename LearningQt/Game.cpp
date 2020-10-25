@@ -4,7 +4,6 @@
 #include "Game.h"
 
 #include <QTimer>
-#include <QDebug>
 
 #include "Enemy.h"
 
@@ -43,6 +42,11 @@ CGame::CGame( QWidget* pParent )
     QTimer* pTimer { new QTimer() };
     QObject::connect( pTimer, SIGNAL( timeout() ), m_pPlayer, SLOT( spawnEnemy() ) );
     pTimer->start( 2500 );
+
+    m_pMediaPlayer->setMedia( QUrl( "qrc:/sounds/bgsound.mp3" ) );
+    m_pMediaPlayer->play();
+
+    show();
 }
 
 CScore& CGame::getScore()

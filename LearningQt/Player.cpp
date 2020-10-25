@@ -41,6 +41,8 @@ void CPlayer::keyPressEvent( QKeyEvent* pEvent )
     }
     case Qt::Key_Space:
     {
+        m_pMediaPlayer->setMedia( QUrl( "qrc:/sounds/bullet.mp3" ) );
+        m_pMediaPlayer->play();
         CBullet* pBullet { new CBullet() };
         pBullet->setPos( x() + rect().width() / 2 - pBullet->rect().width() / 2, y() - pBullet->rect().height() );
         scene()->addItem( pBullet );

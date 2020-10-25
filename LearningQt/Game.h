@@ -6,6 +6,7 @@
 #include <QtWidgets/QWidget>
 #include <QtWidgets/QGraphicsScene>
 #include <QtWidgets/QGraphicsView>
+#include <QMediaPlayer>
 
 #include "Player.h"
 #include "Score.h"
@@ -33,10 +34,11 @@ public:
 /////////////////////////////
 /// Members
 private:
-    QGraphicsScene* m_pScene    { new QGraphicsScene() };
-    CPlayer*        m_pPlayer   { new CPlayer() };
-    CScore*         m_pScore    { new CScore() };
-    CHealth*        m_pHealth   { new CHealth() };
+    QGraphicsScene* m_pScene        { new QGraphicsScene() };
+    CPlayer*        m_pPlayer       { new CPlayer() };
+    CScore*         m_pScore        { new CScore() };
+    CHealth*        m_pHealth       { new CHealth() };
+    QMediaPlayer*   m_pMediaPlayer  { new QMediaPlayer() };
     //Score* score;
     //Health* health;
 

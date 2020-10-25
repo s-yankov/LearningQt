@@ -6,6 +6,7 @@
 #include <QtWidgets/QGraphicsRectItem>
 #include <QKeyEvent>
 #include <QObject>
+#include <QMediaPlayer>
 
 ///////////////////
 /// CPlayer
@@ -36,5 +37,11 @@ public slots:
 	/// Creates and adds enemies to scene
 	/// </summary>
 	void spawnEnemy();
+
+
+///////////////////
+/// Members
+private:
+	QMediaPlayer* m_pMediaPlayer { new QMediaPlayer() };
 };
 

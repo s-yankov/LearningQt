@@ -1,4 +1,7 @@
 <RCC>
-    <qresource prefix="QtApp">
+    <qresource prefix="/QtApp"/>
+    <qresource prefix="/sounds">
+        <file>bgsound.mp3</file>
+        <file>bullet.mp3</file>
     </qresource>
 </RCC>
