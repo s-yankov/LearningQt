@@ -31,6 +31,7 @@ CGame::CGame( QWidget* pParent )
     m_pScore->setPos( x(), y() );
     m_pScene->addItem( m_pScore );
 
+    // Add health to the scene
     m_pHealth->setPos( x() + (qreal)GAME_VIEW_WIDTH - m_pHealth->textWidth(), y() );
     m_pScene->addItem( m_pHealth );
 

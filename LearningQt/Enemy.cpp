@@ -33,9 +33,16 @@ void CEnemy::move()
 	{
 		if ( typeid( *( pCollidingItems[ i ] ) ) == typeid( CPlayer ) )
 		{
-			g_pGame->getHealth().decrease();
+			CHealth& oHealth = g_pGame->getHealth();
+			oHealth.decrease();
 			g_pGame->scene()->removeItem( this );
 			delete this;
+
+			if ( oHealth.getHealth() <= 0 )
+			{
+				g_pGame->hide();
+			}
+
 			return;
 		}
 	}
