@@ -13,13 +13,13 @@
 
 CGame::CGame( QWidget* pParent )
 {
-    // Set fixed size for the view
-    setFixedSize( GAME_VIEW_WIDTH, GAME_VIEW_HEIGHT );
-
     // Create scene with the size of the view
     m_pScene = new QGraphicsScene();
     m_pScene->setSceneRect( 0, 0, GAME_VIEW_WIDTH, GAME_VIEW_HEIGHT );
     setScene( m_pScene );
+
+    // Set fixed size for the view
+    setFixedSize( GAME_VIEW_WIDTH, GAME_VIEW_HEIGHT );
 
     // Create player in the middle of the bottom side of the view
     // Make it focusable and focus it
