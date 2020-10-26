@@ -15,9 +15,9 @@ extern CGame* g_pGame;
 #define ENEMY_RECT_WIDTH	100
 #define ENEMY_RECT_HEIGHT	100
 
-CEnemy::CEnemy()
+CEnemy::CEnemy( QGraphicsItem* pParent ) : QObject(), QGraphicsPixmapItem( pParent )
 {
-	setRect( 0, 0, ENEMY_RECT_WIDTH, ENEMY_RECT_HEIGHT );
+	setPixmap( QPixmap( ":/images/enemy_resized.png" ) );
 	int nRandomNumber = rand() % 700;
 	setPos( nRandomNumber, 0 );
 
@@ -40,7 +40,7 @@ void CEnemy::move()
 
 			if ( oHealth.getHealth() <= 0 )
 			{
-				g_pGame->hide();
+				g_pGame->close();
 			}
 
 			return;
@@ -48,7 +48,7 @@ void CEnemy::move()
 	}
 	setPos( x(), y() + 5 );
 
-	if ( pos().y() + rect().height() < 0 )
+	if ( pos().y() + boundingRect().height() < 0 )
 	{
 		scene()->removeItem( this );
 		delete this;

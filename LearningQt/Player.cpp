@@ -12,9 +12,9 @@
 #define PLAYER_RECT_WIDTH   100
 #define PLAYER_RECT_HEIGTH  100
 
-CPlayer::CPlayer()
+CPlayer::CPlayer( QGraphicsItem* pParent ) : QObject(), QGraphicsPixmapItem( pParent )
 {
-    setRect( 0, 0, PLAYER_RECT_WIDTH, PLAYER_RECT_HEIGTH );
+    setPixmap( QPixmap( ":/images/player_resized.png" ) );
 }
 
 void CPlayer::keyPressEvent( QKeyEvent* pEvent )
@@ -33,7 +33,7 @@ void CPlayer::keyPressEvent( QKeyEvent* pEvent )
     case Qt::Key_Right:
     {
         // TODO: Find a better way to get view's max width
-        if ( pos().x() + rect().width() < 800 )
+        if ( pos().x() + boundingRect().width() < 800 )
         {
             setPos( x() + 10, y() );
         }
@@ -44,7 +44,7 @@ void CPlayer::keyPressEvent( QKeyEvent* pEvent )
         m_pMediaPlayer->setMedia( QUrl( "qrc:/sounds/bullet.mp3" ) );
         m_pMediaPlayer->play();
         CBullet* pBullet { new CBullet() };
-        pBullet->setPos( x() + rect().width() / 2 - pBullet->rect().width() / 2, y() - pBullet->rect().height() );
+        pBullet->setPos( x() + boundingRect().width() / 2 - pBullet->boundingRect().width() / 2, y() - pBullet->boundingRect().height() );
         scene()->addItem( pBullet );
         break;
     }

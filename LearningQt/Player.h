@@ -3,21 +3,21 @@
 ///
 #pragma once
 
-#include <QtWidgets/QGraphicsRectItem>
+#include <QtWidgets/QGraphicsPixmapItem>
 #include <QKeyEvent>
 #include <QObject>
 #include <QMediaPlayer>
 
 ///////////////////
 /// CPlayer
-class CPlayer : public QObject, public QGraphicsRectItem
+class CPlayer : public QObject, public QGraphicsPixmapItem
 {
 	Q_OBJECT
 
 ////////////////////////////////////////
 /// Constructor / Destructor
 public:
-	CPlayer();
+	CPlayer( QGraphicsItem* pParent = 0 );
 
 
 ///////////////////

@@ -3,12 +3,12 @@
 ///
 #pragma once
 
-#include <QtWidgets/QGraphicsRectItem>
+#include <QtWidgets/QGraphicsPixmapItem>
 #include <QObject>
 
 ///////////////////
 /// CBullet
-class CBullet : public QObject, public QGraphicsRectItem
+class CBullet : public QObject, public QGraphicsPixmapItem
 {
 	Q_OBJECT
 
@@ -20,7 +20,7 @@ public:
 	/// <para>Sets the starting position to the center of the top side of the player</para>
 	/// <para>Calls move() method of this class</para>
 	/// </summary>
-	CBullet();
+	CBullet( QGraphicsItem* pParent = 0 );
 
 /////////////////////////////
 /// Methods (Slots)

@@ -16,13 +16,17 @@ CGame::CGame( QWidget* pParent )
     m_pScene->setSceneRect( 0, 0, GAME_VIEW_WIDTH, GAME_VIEW_HEIGHT );
     setScene( m_pScene );
 
+    // Set background image
+    QPixmap oBackground( ":/images/bg_resized.jpg" );
+    setBackgroundBrush( oBackground );
+
     // Set fixed size for the view
     setFixedSize( GAME_VIEW_WIDTH, GAME_VIEW_HEIGHT );
 
     // Create player in the middle of the bottom side of the view
     // Make it focusable and focus it
     m_pScene->addItem( m_pPlayer );
-    m_pPlayer->setPos( GAME_VIEW_WIDTH / 2 - m_pPlayer->rect().width() / 2, GAME_VIEW_HEIGHT - m_pPlayer->rect().height() - 3 );
+    m_pPlayer->setPos( GAME_VIEW_WIDTH / 2 - m_pPlayer->boundingRect().width() / 2, GAME_VIEW_HEIGHT - m_pPlayer->boundingRect().height() - 3 );
     m_pPlayer->setFlag( QGraphicsItem::ItemIsFocusable );
     m_pPlayer->setFocus();
 

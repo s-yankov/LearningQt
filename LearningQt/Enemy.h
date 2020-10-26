@@ -3,12 +3,12 @@
 ///
 #pragma once
 
-#include <QtWidgets/QGraphicsRectItem>
+#include <QtWidgets/QGraphicsPixmapItem>
 #include <QObject>
 
 ///////////////////
 /// CEnemy
-class CEnemy : public QObject, public QGraphicsRectItem
+class CEnemy : public QObject, public QGraphicsPixmapItem
 {
 	Q_OBJECT
 
@@ -20,7 +20,7 @@ public:
 	/// <para>Sets a random position</para>
 	/// <para>Calls move() method of this class</para>
 	/// </summary>
-	CEnemy();
+	CEnemy( QGraphicsItem* pParent = 0 );
 
 /////////////////////////////
 /// Methods (Slots)
