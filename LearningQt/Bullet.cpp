@@ -17,7 +17,7 @@ CBullet::CBullet( QGraphicsItem* pParent ) : QObject(), QGraphicsPixmapItem( pPa
 
 	QTimer* pTimer { new QTimer() };
 	connect( pTimer, SIGNAL( timeout() ), this, SLOT( move() ) );
-	pTimer->start( 50 );
+	pTimer->start( 20 );
 }
 
 void CBullet::move()
@@ -36,7 +36,7 @@ void CBullet::move()
 		}
 	}
 
-	setPos( x(), y() - 10 );
+	setPos( x(), y() - 15 );
 
 	if ( pos().y() + boundingRect().height() < 0 )
 	{

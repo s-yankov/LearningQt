@@ -13,30 +13,29 @@
 CGame::CGame( QWidget* pParent )
 {
     // Create scene with the size of the view
-    m_pScene->setSceneRect( 0, 0, GAME_VIEW_WIDTH, GAME_VIEW_HEIGHT );
-    setScene( m_pScene );
+    m_oScene.setSceneRect( 0, 0, GAME_VIEW_WIDTH, GAME_VIEW_HEIGHT );
+    setScene( &m_oScene );
 
     // Set background image
-    QPixmap oBackground( ":/images/bg_resized.jpg" );
-    setBackgroundBrush( oBackground );
+    setBackgroundBrush( m_oBackground );
 
     // Set fixed size for the view
     setFixedSize( GAME_VIEW_WIDTH, GAME_VIEW_HEIGHT );
 
     // Create player in the middle of the bottom side of the view
     // Make it focusable and focus it
-    m_pScene->addItem( m_pPlayer );
-    m_pPlayer->setPos( GAME_VIEW_WIDTH / 2 - m_pPlayer->boundingRect().width() / 2, GAME_VIEW_HEIGHT - m_pPlayer->boundingRect().height() - 3 );
-    m_pPlayer->setFlag( QGraphicsItem::ItemIsFocusable );
-    m_pPlayer->setFocus();
+    m_oScene.addItem( &m_oPlayer );
+    m_oPlayer.setPos( GAME_VIEW_WIDTH / 2 - m_oPlayer.boundingRect().width() / 2, GAME_VIEW_HEIGHT - m_oPlayer.boundingRect().height() - 3 );
+    m_oPlayer.setFlag( QGraphicsItem::ItemIsFocusable );
+    m_oPlayer.setFocus();
 
     // Add score to the scene
-    m_pScore->setPos( x(), y() );
-    m_pScene->addItem( m_pScore );
+    m_oScore.setPos( x(), y() );
+    m_oScene.addItem( &m_oScore );
 
     // Add health to the scene
     m_pHealth->setPos( x() + (qreal)GAME_VIEW_WIDTH - m_pHealth->textWidth(), y() );
-    m_pScene->addItem( m_pHealth );
+    m_oScene.addItem( m_pHealth );
 
     // Disable horizontal and vertical scrolling
     setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
@@ -44,7 +43,7 @@ CGame::CGame( QWidget* pParent )
 
     // Add enemies
     QTimer* pTimer { new QTimer() };
-    QObject::connect( pTimer, SIGNAL( timeout() ), m_pPlayer, SLOT( spawnEnemy() ) );
+    QObject::connect( pTimer, SIGNAL( timeout() ), &m_oPlayer, SLOT( spawnEnemy() ) );
     pTimer->start( 2500 );
 
     m_pMediaPlayer->setMedia( QUrl( "qrc:/sounds/bgsound.mp3" ) );
@@ -55,7 +54,7 @@ CGame::CGame( QWidget* pParent )
 
 CScore& CGame::getScore()
 {
-    return *m_pScore;
+    return m_oScore;
 }
 
 CHealth& CGame::getHealth()

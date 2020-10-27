@@ -26,7 +26,7 @@ void CPlayer::keyPressEvent( QKeyEvent* pEvent )
     {
         if ( pos().x() > 0 )
         {
-            setPos( x() - 10, y() );
+            setPos( x() - 15, y() );
         }
         break;
     }
@@ -35,7 +35,7 @@ void CPlayer::keyPressEvent( QKeyEvent* pEvent )
         // TODO: Find a better way to get view's max width
         if ( pos().x() + boundingRect().width() < 800 )
         {
-            setPos( x() + 10, y() );
+            setPos( x() + 15, y() );
         }
         break;
     }

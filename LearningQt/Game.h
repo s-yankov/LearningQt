@@ -34,13 +34,12 @@ public:
 /////////////////////////////
 /// Members
 private:
-    QGraphicsScene* m_pScene        { new QGraphicsScene() };
-    CPlayer*        m_pPlayer       { new CPlayer() };
-    CScore*         m_pScore        { new CScore() };
+    QGraphicsScene  m_oScene        {};
+    CPlayer         m_oPlayer       {};
+    CScore          m_oScore        {};
     CHealth*        m_pHealth       { new CHealth() };
     QMediaPlayer*   m_pMediaPlayer  { new QMediaPlayer() };
-    //Score* score;
-    //Health* health;
+    QPixmap         m_oBackground   { ":/images/bg_resized.jpg" };
 
 };
 
