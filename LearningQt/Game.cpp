@@ -4,6 +4,7 @@
 #include "Game.h"
 
 #include <QTimer>
+#include <QDebug>
 
 #include "Enemy.h"
 
@@ -60,4 +61,17 @@ CScore& CGame::getScore()
 CHealth& CGame::getHealth()
 {
     return *m_pHealth;
+}
+
+
+void CGame::mouseMoveEvent( QMouseEvent* pMouseEvent )
+{
+    qDebug() << "Mouse event\n";
+    QPoint& oMousePos = pMouseEvent->pos();
+    qreal qMouseX = oMousePos.x();
+    qreal qMouseY = oMousePos.y();
+
+    qreal qPlayerX = qMouseX - m_oPlayer.boundingRect().width() / 2;
+    qreal qPlayerY = qMouseY - m_oPlayer.boundingRect().height() / 2;
+    m_oPlayer.setPos( qPlayerX, qPlayerY );
 }

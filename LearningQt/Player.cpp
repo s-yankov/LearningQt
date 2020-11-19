@@ -17,9 +17,9 @@ CPlayer::CPlayer( QGraphicsItem* pParent ) : QObject(), QGraphicsPixmapItem( pPa
     setPixmap( QPixmap( ":/images/player_resized.png" ) );
 }
 
-void CPlayer::keyPressEvent( QKeyEvent* pEvent )
+void CPlayer::keyPressEvent( QKeyEvent* pKeyEvent )
 {
-    int nKeyPressed { pEvent->key() };
+    int nKeyPressed { pKeyEvent->key() };
     switch ( nKeyPressed )
     {
     case Qt::Key_Left:

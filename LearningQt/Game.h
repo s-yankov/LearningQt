@@ -31,6 +31,8 @@ public:
     /// <returns>Reference to player CHealth object</returns>
     CHealth&    getHealth();
 
+    void mouseMoveEvent( QMouseEvent* pMouseEvent );
+
 /////////////////////////////
 /// Members
 private:

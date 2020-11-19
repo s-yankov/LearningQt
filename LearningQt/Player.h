@@ -27,7 +27,7 @@ public:
 	/// Detects a key press event
 	/// </summary>
 	/// <param name="pEvent">*QKeyEvent</param>
-	void keyPressEvent( QKeyEvent* pEvent );
+	void keyPressEvent( QKeyEvent* pKeyEvent );
 
 
 ///////////////////
