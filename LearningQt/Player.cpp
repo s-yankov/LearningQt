@@ -53,6 +53,16 @@ void CPlayer::keyPressEvent( QKeyEvent* pKeyEvent )
     }
 }
 
+void CPlayer::shootBullet()
+{
+    QMediaPlayer oMediaPlayer { new QMediaPlayer() };
+    oMediaPlayer.setMedia( QUrl( "qrc:/sounds/bullet.mp3" ) );
+    oMediaPlayer.play();
+    CBullet* pBullet { new CBullet() };
+    pBullet->setPos( x() + boundingRect().width() / 2 - pBullet->boundingRect().width() / 2, y() - pBullet->boundingRect().height() );
+    scene()->addItem( pBullet );
+}
+
 void CPlayer::spawnEnemy()
 {
     CEnemy* pEnemy { new CEnemy() };

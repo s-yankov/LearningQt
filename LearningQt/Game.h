@@ -7,6 +7,7 @@
 #include <QtWidgets/QGraphicsScene>
 #include <QtWidgets/QGraphicsView>
 #include <QMediaPlayer>
+#include <QTimer>
 
 #include "Player.h"
 #include "Score.h"
@@ -32,6 +33,8 @@ public:
     CHealth&    getHealth();
 
     void mouseMoveEvent( QMouseEvent* pMouseEvent );
+    void mousePressEvent( QMouseEvent* pMouseEvent );
+    void mouseReleaseEvent( QMouseEvent* pMouseEvent );
 
 /////////////////////////////
 /// Members
@@ -42,6 +45,7 @@ private:
     CHealth*        m_pHealth       { new CHealth() };
     QMediaPlayer*   m_pMediaPlayer  { new QMediaPlayer() };
     QPixmap         m_oBackground   { ":/images/bg_resized.jpg" };
+    QTimer*         m_pBulletTimer  { new QTimer() };
 
 };
 

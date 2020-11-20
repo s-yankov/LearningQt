@@ -37,6 +37,7 @@ public slots:
 	/// Creates and adds enemies to scene
 	/// </summary>
 	void spawnEnemy();
+	void shootBullet();
 
 
 ///////////////////

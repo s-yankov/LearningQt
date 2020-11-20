@@ -7,6 +7,7 @@
 #include <QDebug>
 
 #include "Enemy.h"
+#include "Bullet.h"
 
 #define GAME_VIEW_WIDTH     800
 #define GAME_VIEW_HEIGHT    600
@@ -47,6 +48,9 @@ CGame::CGame( QWidget* pParent )
     QObject::connect( pTimer, SIGNAL( timeout() ), &m_oPlayer, SLOT( spawnEnemy() ) );
     pTimer->start( 2500 );
 
+    //Add bullet shooting
+    QObject::connect( m_pBulletTimer, SIGNAL( timeout() ), &m_oPlayer, SLOT( shootBullet() ) );
+
     m_pMediaPlayer->setMedia( QUrl( "qrc:/sounds/bgsound.mp3" ) );
     m_pMediaPlayer->play();
 
@@ -66,7 +70,6 @@ CHealth& CGame::getHealth()
 
 void CGame::mouseMoveEvent( QMouseEvent* pMouseEvent )
 {
-    qDebug() << "Mouse event\n";
     QPoint& oMousePos = pMouseEvent->pos();
     qreal qMouseX = oMousePos.x();
     qreal qMouseY = oMousePos.y();
@@ -74,4 +77,24 @@ void CGame::mouseMoveEvent( QMouseEvent* pMouseEvent )
     qreal qPlayerX = qMouseX - m_oPlayer.boundingRect().width() / 2;
     qreal qPlayerY = qMouseY - m_oPlayer.boundingRect().height() / 2;
     m_oPlayer.setPos( qPlayerX, qPlayerY );
+}
+
+void CGame::mousePressEvent( QMouseEvent* pMouseEvent )
+{
+    if ( pMouseEvent->button() == Qt::LeftButton && pMouseEvent->type() == QMouseEvent::MouseButtonPress )
+    {
+        m_oPlayer.shootBullet();
+        m_pBulletTimer->start( 500 );
+    }
+}
+
+void CGame::mouseReleaseEvent( QMouseEvent* pMouseEvent )
+{
+    if ( pMouseEvent->button() == Qt::LeftButton && pMouseEvent->type() == QMouseEvent::MouseButtonRelease )
+    {
+        if ( m_pBulletTimer->isActive() )
+        {
+            m_pBulletTimer->stop();
+        }
+    }
 }
