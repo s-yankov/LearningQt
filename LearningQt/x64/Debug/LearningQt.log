@@ -1,2 +1,11 @@
-﻿  Game.cpp
+﻿  moc QtApp.h
+  moc Player.h
+  Bullet.cpp
+  Enemy.cpp
+  Game.cpp
+  Player.cpp
+  QtApp.cpp
+  main.cpp
+  moc_Player.cpp
+  moc_QtApp.cpp
   LearningQt.vcxproj -> D:\code\cpp\LearningQt\x64\Debug\LearningQt.exe

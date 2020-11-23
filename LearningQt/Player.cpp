@@ -15,6 +15,7 @@
 CPlayer::CPlayer( QGraphicsItem* pParent ) : QObject(), QGraphicsPixmapItem( pParent )
 {
     setPixmap( QPixmap( ":/images/player_resized.png" ) );
+    QObject::connect( m_pBulletTimer, SIGNAL( timeout() ), this, SLOT( shootBullet() ) );
 }
 
 void CPlayer::keyPressEvent( QKeyEvent* pKeyEvent )
@@ -41,11 +42,8 @@ void CPlayer::keyPressEvent( QKeyEvent* pKeyEvent )
     }
     case Qt::Key_Space:
     {
-        m_pMediaPlayer->setMedia( QUrl( "qrc:/sounds/bullet.mp3" ) );
-        m_pMediaPlayer->play();
-        CBullet* pBullet { new CBullet() };
-        pBullet->setPos( x() + boundingRect().width() / 2 - pBullet->boundingRect().width() / 2, y() - pBullet->boundingRect().height() );
-        scene()->addItem( pBullet );
+        shootBullet();
+        m_pBulletTimer->start( 500 );
         break;
     }
     default:
@@ -53,11 +51,22 @@ void CPlayer::keyPressEvent( QKeyEvent* pKeyEvent )
     }
 }
 
+void CPlayer::keyReleaseEvent( QKeyEvent* pKeyEvent )
+{
+    int nKeyReleased { pKeyEvent->key() };
+    if ( nKeyReleased == Qt::Key_Space )
+    {
+        if ( m_pBulletTimer->isActive() )
+        {
+            m_pBulletTimer->stop();
+        }
+    }
+}
+
 void CPlayer::shootBullet()
 {
-    QMediaPlayer oMediaPlayer { new QMediaPlayer() };
-    oMediaPlayer.setMedia( QUrl( "qrc:/sounds/bullet.mp3" ) );
-    oMediaPlayer.play();
+    m_pMediaPlayer->setMedia( QUrl( "qrc:/sounds/bullet.mp3" ) );
+    m_pMediaPlayer->play();
     CBullet* pBullet { new CBullet() };
     pBullet->setPos( x() + boundingRect().width() / 2 - pBullet->boundingRect().width() / 2, y() - pBullet->boundingRect().height() );
     scene()->addItem( pBullet );

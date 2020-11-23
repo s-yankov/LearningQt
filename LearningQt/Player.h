@@ -7,6 +7,7 @@
 #include <QKeyEvent>
 #include <QObject>
 #include <QMediaPlayer>
+#include <QTimer>
 
 ///////////////////
 /// CPlayer
@@ -27,7 +28,8 @@ public:
 	/// Detects a key press event
 	/// </summary>
 	/// <param name="pEvent">*QKeyEvent</param>
-	void keyPressEvent( QKeyEvent* pKeyEvent );
+	void keyPressEvent(		QKeyEvent* pKeyEvent );
+	void keyReleaseEvent(	QKeyEvent* pKeyEvent );
 
 
 ///////////////////
@@ -43,6 +45,7 @@ public slots:
 ///////////////////
 /// Members
 private:
-	QMediaPlayer* m_pMediaPlayer { new QMediaPlayer() };
+	QMediaPlayer*	m_pMediaPlayer	{ new QMediaPlayer() };
+	QTimer*			m_pBulletTimer	{ new QTimer() };
 };
 

@@ -5,11 +5,11 @@
 
 class QtApp : public QMainWindow
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    QtApp(QWidget *parent = Q_NULLPTR);
+	QtApp(QWidget *parent = Q_NULLPTR);
 
 private:
-    Ui::QtAppClass ui;
+	Ui::QtAppClass ui;
 };

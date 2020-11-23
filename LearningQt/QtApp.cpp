@@ -1,7 +1,7 @@
 #include "QtApp.h"
 
 QtApp::QtApp(QWidget *parent)
-    : QMainWindow(parent)
+	: QMainWindow(parent)
 {
-    ui.setupUi(this);
+	ui.setupUi(this);
 }
